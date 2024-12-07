@@ -34,9 +34,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <div className="min-h-screen flex flex-col">
-          <nav className="bg-red-500 text-white p-4 space-x-2 text-3xl">
-            <Link to="/users">Users</Link>
-          </nav>
           <main className="flex-1 flex flex-row">
             {children}
           </main>
