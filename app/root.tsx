@@ -25,18 +25,6 @@ export const links: LinksFunction = () => [
 ];
 
 export function Layout({children}: { children: React.ReactNode }) {
-    const firebaseConfig = {
-        apiKey: "AIzaSyAPjppSvsK_LJ68EH6eLRPnIwIHKJ8N8ao",
-        authDomain: "remercee-app-dashboard.firebaseapp.com",
-        projectId: "remercee-app-dashboard",
-        storageBucket: "remercee-app-dashboard.firebasestorage.app",
-        messagingSenderId: "791290341387",
-        appId: "1:791290341387:web:4b4e72cdf737b4ee9d7f0e",
-        measurementId: "G-95Q8211GZC"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    getAnalytics(app);
     return (
         <html lang="en">
         <head>
