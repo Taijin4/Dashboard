@@ -1,7 +1,7 @@
-import { Form, Link, Outlet, useLoaderData } from "@remix-run/react";
-import { useState } from "react";
-import { CiSearch } from "react-icons/ci";
-import { FaUserCircle } from "react-icons/fa";
+import {Form, Link, Outlet, useLoaderData} from "@remix-run/react";
+import {MouseEventHandler, useState} from "react";
+import {CiSearch} from "react-icons/ci";
+import {FaUserCircle} from "react-icons/fa";
 
 interface User {
     id: string;
@@ -13,11 +13,11 @@ interface User {
 export async function loader() {
     const response = await fetch("https://api-cnw6qzk6uq-uc.a.run.app/users");
     const users = await response.json();
-    return { userList: users.users };
+    return {userList: users.users};
 }
 
 export default function Users() {
-    let { userList } = useLoaderData<typeof loader>();
+    const {userList} = useLoaderData<typeof loader>();
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
 
@@ -30,7 +30,7 @@ export default function Users() {
             <div className="w-1/5 border-r-2 p-8">
                 {/* Barre de recherche */}
                 <div className="relative mb-4">
-                    <CiSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-500 w-7 h-7" />
+                    <CiSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-500 w-7 h-7"/>
                     <input
                         type="text"
                         placeholder="Search users"
@@ -47,10 +47,11 @@ export default function Users() {
                         filteredUsers.map((user: User) => (
                             <Link
                                 to={`/users/${user.username}`}
+                                key={user.id}
                             >
                                 <li
                                     key={user.id}
-                                    onClick={() => setSelectedUserId(user.id)} // Sélectionne l'utilisateur cliqué
+                                    onClick={() => setSelectedUserId(user.id)}
                                     className={`flex items-center space-x-4 p-4 rounded-2xl hover:bg-gray-100 cursor-pointer mt-2 ${
                                         selectedUserId === user.id ? "bg-gray-200 hover:bg-gray-200" : ""
                                     }`} // Ajout de la classe si sélectionné
@@ -70,7 +71,7 @@ export default function Users() {
                                             }}
                                         />
                                     ) : (
-                                        <FaUserCircle className="w-16 h-16 text-gray-400" />
+                                        <FaUserCircle className="w-16 h-16 text-gray-400"/>
                                     )}
 
                                     {/* Informations utilisateur */}
@@ -91,7 +92,7 @@ export default function Users() {
 
             {/* Contenu principal */}
             <div className="flex-1 flex">
-                <Outlet />
+                <Outlet/>
             </div>
         </>
     );

@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router";
 import { useState, useEffect } from "react";
-import { Pencil, Check } from "lucide-react";
+import { Check } from "lucide-react";
 
 interface Note {
   judge: string;
