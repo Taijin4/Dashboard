@@ -5,8 +5,6 @@ import {
     Scripts,
     ScrollRestoration,
 } from "@remix-run/react";
-import {initializeApp} from "firebase/app";
-import {getAnalytics} from "firebase/analytics";
 import type {LinksFunction} from "@remix-run/node";
 
 import "./tailwind.css";
